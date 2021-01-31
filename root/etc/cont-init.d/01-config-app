@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+umask "${UMASK}"
+
+if [[ ! -e "${CONFIG_DIR}/.stash" ]]; then
+    ln -s "${CONFIG_DIR}/app/" "${CONFIG_DIR}/.stash"
+    chown -h hotio:hotio "${CONFIG_DIR}/.stash"
+fi
+
+if [[ ! -e "${CONFIG_DIR}/.stash/ffmpeg" ]]; then
+    ln -s "$(which ffmpeg)" "${CONFIG_DIR}/.stash/ffmpeg"
+    chown -h hotio:hotio "${CONFIG_DIR}/.stash/ffmpeg"
+fi
+
+if [[ ! -e "${CONFIG_DIR}/.stash/ffprobe" ]]; then
+    ln -s "$(which ffprobe)" "${CONFIG_DIR}/.stash/ffprobe"
+    chown -h hotio:hotio "${CONFIG_DIR}/.stash/ffprobe"
+fi
