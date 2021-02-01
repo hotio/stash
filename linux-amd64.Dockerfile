@@ -2,7 +2,7 @@ FROM ghcr.io/hotio/base@sha256:e4b441eeb9faf8ab5fee10395a92f4965ae1945bd427af604
 
 EXPOSE 9999
 
-RUN apk add --no-cache ffmpeg python3
+RUN apk add --no-cache ffmpeg python3 py3-requests sqlite-libs
 
 ARG VERSION
 RUN curl -fsSL "https://github.com/stashapp/stash/releases/download/v${VERSION}/stash-linux" > "${APP_DIR}/stash" && \
