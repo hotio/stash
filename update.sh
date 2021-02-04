@@ -28,10 +28,10 @@ elif [[ ${1} == "screenshot" ]]; then
     docker run --rm --network host --entrypoint="" -u "$(id -u "$USER")" -v "${GITHUB_WORKSPACE}":/usr/src/app/src zenika/alpine-chrome:with-puppeteer node src/puppeteer.js
     exit 0
 else
-    version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/stashapp/stash/releases/latest" | jq -r .tag_name | sed s/v//g)
+    version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/stashapp/stash/releases/tags/latest_develop" | jq -r .target_commitish)
     [[ -z ${version} ]] && exit 1
     old_version=$(jq -r '.version' < VERSION.json)
     changelog=$(jq -r '.changelog' < VERSION.json)
-    [[ "${old_version}" != "${version}" ]] && changelog="https://github.com/stashapp/stash/compare/v${old_version}...v${version}"
+    [[ "${old_version}" != "${version}" ]] && changelog="https://github.com/stashapp/stash/compare/${old_version}...${version}"
     echo '{"version":"'"${version}"'","changelog":"'"${changelog}"'"}' | jq . > VERSION.json
 fi
