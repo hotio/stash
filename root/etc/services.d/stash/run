@@ -3,13 +3,5 @@
 
 umask "${UMASK}"
 
-redirect_cmd() {
-    if [[ "${DEBUG}" == "yes" ]]; then
-        "$@"
-    else
-        "$@" > /dev/null 2>&1
-    fi
-}
-
 # shellcheck disable=SC2086
-HOME="${CONFIG_DIR}" redirect_cmd exec s6-setuidgid hotio "${APP_DIR}/stash" --config "${CONFIG_DIR}/app/config.yml" ${ARGS}
+HOME="${CONFIG_DIR}" exec s6-setuidgid hotio "${APP_DIR}/stash" --config "${CONFIG_DIR}/app/config.yml" ${ARGS}
