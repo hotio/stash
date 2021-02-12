@@ -4,4 +4,4 @@
 umask "${UMASK}"
 
 # shellcheck disable=SC2086
-HOME="${CONFIG_DIR}" exec s6-setuidgid hotio "${APP_DIR}/stash" --config "${CONFIG_DIR}/app/config.yml" ${ARGS}
+HOME="${CONFIG_DIR}" exec s6-setuidgid hotio "${APP_DIR}/stash" --config "${CONFIG_DIR}/config.yml" ${ARGS}
