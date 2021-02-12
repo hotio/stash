@@ -3,7 +3,7 @@
 
 umask "${UMASK}"
 
-ln -s -f "${CONFIG_DIR}/" "${CONFIG_DIR}/.stash"
+ln -s -f -n "${CONFIG_DIR}/" "${CONFIG_DIR}/.stash"
 chown -h hotio:hotio "${CONFIG_DIR}/.stash"
 
 if [[ ! -e "${CONFIG_DIR}/.stash/ffmpeg" ]]; then
