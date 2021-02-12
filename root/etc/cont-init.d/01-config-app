@@ -3,10 +3,8 @@
 
 umask "${UMASK}"
 
-if [[ ! -e "${CONFIG_DIR}/.stash" ]]; then
-    ln -s "${CONFIG_DIR}/app/" "${CONFIG_DIR}/.stash"
-    chown -h hotio:hotio "${CONFIG_DIR}/.stash"
-fi
+ln -s -f "${CONFIG_DIR}/" "${CONFIG_DIR}/.stash"
+chown -h hotio:hotio "${CONFIG_DIR}/.stash"
 
 if [[ ! -e "${CONFIG_DIR}/.stash/ffmpeg" ]]; then
     ln -s "$(which ffmpeg)" "${CONFIG_DIR}/.stash/ffmpeg"
