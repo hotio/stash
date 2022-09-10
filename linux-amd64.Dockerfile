@@ -9,3 +9,4 @@ RUN curl -fsSL "https://github.com/stashapp/stash/releases/download/v${VERSION}/
     chmod 755 "${APP_DIR}/stash"
 
 COPY root/ /
+RUN chmod -R +x /etc/cont-init.d/ /etc/services.d/
