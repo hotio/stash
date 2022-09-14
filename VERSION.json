@@ -1,6 +1,6 @@
 {
-  "version": "c43c695f5d795e9a48d788ecf76c6ca8b81b9d4c",
-  "changelog": "https://github.com/stashapp/stash/compare/9dcf03eb7076972d40c9280a38aae2343194cba5...c43c695f5d795e9a48d788ecf76c6ca8b81b9d4c",
+  "version": "d558902dfb79156ca53f923f71e673ad827b2edd",
+  "changelog": "https://github.com/stashapp/stash/compare/c43c695f5d795e9a48d788ecf76c6ca8b81b9d4c...d558902dfb79156ca53f923f71e673ad827b2edd",
   "upstream_image": "cr.hotio.dev/hotio/base",
   "upstream_tag": "alpine",
   "upstream_digest_amd64": "sha256:7fb1409bac0085160b4cd32c20e08946e2caec104da84a6d1a582bdbbef77eb1",
