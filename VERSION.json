@@ -1,4 +1,5 @@
 {
+  "description": "Unstable",
   "version": "cffcd9f4b8bb1e56881f64483f2044b461428814",
   "changelog": "https://github.com/stashapp/stash/compare/3fa7b470e74c1240e75e11b061c9178b6d6dfca5...cffcd9f4b8bb1e56881f64483f2044b461428814",
   "upstream_image": "cr.hotio.dev/hotio/base",
