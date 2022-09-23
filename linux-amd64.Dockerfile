@@ -2,7 +2,7 @@ ARG UPSTREAM_IMAGE
 ARG UPSTREAM_DIGEST_AMD64
 
 FROM ${UPSTREAM_IMAGE}@${UPSTREAM_DIGEST_AMD64}
-
+EXPOSE 9999
 VOLUME ["${CONFIG_DIR}"]
 
 RUN apk add --no-cache ffmpeg python3 py3-requests sqlite-libs
