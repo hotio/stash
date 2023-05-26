@@ -1,7 +1,7 @@
 {
   "description": "Unstable",
-  "version": "cc9ded05a3a241692c3ac0877f6c1b3a3ad49bb3",
-  "changelog": "https://github.com/stashapp/stash/compare/62b6457f4eb3b470ee376d679c67652a33232019...cc9ded05a3a241692c3ac0877f6c1b3a3ad49bb3",
+  "version": "1c59d91690e09e2391f25f7f65b32cd51b6792b8",
+  "changelog": "https://github.com/stashapp/stash/compare/cc9ded05a3a241692c3ac0877f6c1b3a3ad49bb3...1c59d91690e09e2391f25f7f65b32cd51b6792b8",
   "upstream_image": "cr.hotio.dev/hotio/base",
   "upstream_tag": "alpine",
   "upstream_digest_amd64": "sha256:c1c852483290d0eea96fe5c1ca4b08d6f2056a7cd0c61459c77edeee9386822f",
