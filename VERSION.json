@@ -4,7 +4,7 @@
   "changelog": "https://github.com/stashapp/stash/compare/723211a6202b974631b7d2a90be12a9f5b39707a...1588d1cb4eec4c9bda94a66bc10b9d34b9d029b8",
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "alpinevpn",
-  "upstream_digest_amd64": "sha256:9d06908f6d834ebfbbe58fdb2c1612dbd43c20c10be2f5ed9d6c5074a8672664",
-  "upstream_digest_arm64": "sha256:996a6db00e72a1a49d61ec722bb6a0f951708809ee3bf9558337363a3d35eb7a",
+  "upstream_digest_amd64": "sha256:b7121a2987f647df44ad938ceae19499d83f0a7b966fd6c3b2bc9f86f8065cca",
+  "upstream_digest_arm64": "sha256:0168c2e9126931fda5b2b7702b215d9e0952bf1b90bab74cdec71d2a8c11b4b8",
   "test_url": "http://localhost:9999"
 }
