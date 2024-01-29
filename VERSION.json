@@ -1,7 +1,7 @@
 {
   "description": "Unstable",
-  "version": "1588d1cb4eec4c9bda94a66bc10b9d34b9d029b8",
-  "changelog": "https://github.com/stashapp/stash/compare/723211a6202b974631b7d2a90be12a9f5b39707a...1588d1cb4eec4c9bda94a66bc10b9d34b9d029b8",
+  "version": "11cafe933a2cd42e828c891d9090c6b297acfbbd",
+  "changelog": "https://github.com/stashapp/stash/compare/1588d1cb4eec4c9bda94a66bc10b9d34b9d029b8...11cafe933a2cd42e828c891d9090c6b297acfbbd",
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "alpinevpn",
   "upstream_digest_amd64": "sha256:a55e205512f89e7851be453c57d4b580a454c0378b8cc7a91244b9b60892a988",
