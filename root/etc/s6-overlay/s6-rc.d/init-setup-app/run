@@ -12,14 +12,14 @@ ENVIRONMENT APP
 "
 
 ln -s -f -n "${CONFIG_DIR}/" "${CONFIG_DIR}/.stash"
-chown -h hotio:hotio "${CONFIG_DIR}/.stash"
+find "${CONFIG_DIR}/.stash" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown -h hotio:hotio {} +
 
 if [[ ! -e "${CONFIG_DIR}/.stash/ffmpeg" ]]; then
     ln -s "$(command -v ffmpeg)" "${CONFIG_DIR}/.stash/ffmpeg"
-    chown -h hotio:hotio "${CONFIG_DIR}/.stash/ffmpeg"
+    find "${CONFIG_DIR}/.stash/ffmpeg" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown -h hotio:hotio {} +
 fi
 
 if [[ ! -e "${CONFIG_DIR}/.stash/ffprobe" ]]; then
     ln -s "$(command -v ffprobe)" "${CONFIG_DIR}/.stash/ffprobe"
-    chown -h hotio:hotio "${CONFIG_DIR}/.stash/ffprobe"
+    find "${CONFIG_DIR}/.stash/ffprobe" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown -h hotio:hotio {} +
 fi
