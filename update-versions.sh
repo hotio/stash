@@ -1,6 +1,8 @@
 #!/bin/bash
 old_version=$(jq -re '.version' < VERSION.json)
 version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/stashapp/stash/releases/tags/latest_develop" | jq -re .target_commitish) || exit 1
+[[ -z ${version} ]] && exit 0
+[[ ${version} == null ]] && exit 0
 [[ ${version} == "develop" ]] && version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/stashapp/stash/commits/develop" | jq -re .sha) || exit 1
 if [[ "${version}" != "${old_version}" ]]; then
     curl -fsSL "https://github.com/stashapp/stash/releases/download/latest_develop/CHECKSUMS_SHA1" -o CHECKSUMS_SHA1 || exit 1
