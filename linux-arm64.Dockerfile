@@ -6,6 +6,15 @@ EXPOSE 9999
 ARG IMAGE_STATS
 ENV IMAGE_STATS=${IMAGE_STATS} WEBUI_PORTS="9999/tcp,9999/udp"
 
+ARG DEBIAN_FRONTEND="noninteractive"
+RUN apt update && \
+    apt install -y --no-install-recommends --no-install-suggests \
+        ffmpeg && \
+# clean up
+    apt autoremove -y && \
+    apt clean && \
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+
 ARG VERSION
 RUN curl -fsSL "https://github.com/stashapp/stash/releases/download/v${VERSION}/stash-linux-arm64v8" > "${APP_DIR}/stash" && \
     chmod 755 "${APP_DIR}/stash"
