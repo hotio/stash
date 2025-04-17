@@ -26,13 +26,13 @@
   "release-ubuntu": {
     "description": "Releases",
     "hide": false,
-    "last_updated": "2025-04-17T17:42:25.000Z",
-    "last_updated_url": "https://github.com/hotio/stash/actions/runs/14521455522",
+    "last_updated": "2025-04-17T17:52:38.000Z",
+    "last_updated_url": "https://github.com/hotio/stash/actions/runs/14521625795",
     "latest": false,
     "tags": [
       "release-ubuntu",
       "release-ubuntu-0.28.1",
-      "release-ubuntu-8b103df"
+      "release-ubuntu-3d4b4cf"
     ]
   }
 }
