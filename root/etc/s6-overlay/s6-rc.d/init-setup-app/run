@@ -10,6 +10,3 @@ ENVIRONMENT APP
 WEBUI_PORTS=${WEBUI_PORTS}
 ----------------------------------------------------------------------
 "
-
-ln -s -f -n "${CONFIG_DIR}/" "${CONFIG_DIR}/.stash"
-find "${CONFIG_DIR}/.stash" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown -h hotio:hotio {} +
