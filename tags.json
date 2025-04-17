@@ -22,5 +22,17 @@
       "release-0.28.1",
       "release-b681b5b"
     ]
+  },
+  "release-ubuntu": {
+    "description": "Releases",
+    "hide": false,
+    "last_updated": "2025-04-17T15:48:29.000Z",
+    "last_updated_url": "https://github.com/hotio/stash/actions/runs/14519588039",
+    "latest": false,
+    "tags": [
+      "release-ubuntu",
+      "release-ubuntu-0.28.1",
+      "release-ubuntu-f60e0c8"
+    ]
   }
 }
