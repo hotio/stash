@@ -9,7 +9,7 @@ ENV IMAGE_STATS=${IMAGE_STATS} WEBUI_PORTS="9999/tcp,9999/udp"
 ARG DEBIAN_FRONTEND="noninteractive"
 RUN apt update && \
     apt install -y --no-install-recommends --no-install-suggests \
-        ffmpeg python3-pip && \
+        ffmpeg python3-pip intel-media-va-driver-non-free && \
     pip3 install --break-system-packages --no-cache-dir --upgrade \
         stashapp-tools cloudscraper && \
 # clean up
