@@ -15,6 +15,7 @@ RUN apt update && \
     echo "deb [arch=arm64] https://repo.jellyfin.org/ubuntu noble main" | tee /etc/apt/sources.list.d/jellyfin.list && \
     apt update && \
     apt install -y --no-install-recommends --no-install-suggests \
+        libvips-tools \
         python3-pip \
         jellyfin-ffmpeg7 && \
     pip3 install --break-system-packages --no-cache-dir --upgrade \
