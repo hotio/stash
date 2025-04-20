@@ -11,15 +11,21 @@ WEBUI_PORTS=${WEBUI_PORTS}
 ----------------------------------------------------------------------
 "
 
-ln -s -f -n "${CONFIG_DIR}/" "${CONFIG_DIR}/.stash"
-find "${CONFIG_DIR}/.stash" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown -h hotio:hotio {} +
+#############
+## HW Support
+DEVICES=$(find /dev/dri /dev/dvb -type c -print 2>/dev/null)
 
-if [[ ! -e "${CONFIG_DIR}/.stash/ffmpeg" ]]; then
-    ln -s "$(command -v ffmpeg)" "${CONFIG_DIR}/.stash/ffmpeg"
-    find "${CONFIG_DIR}/.stash/ffmpeg" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown -h hotio:hotio {} +
-fi
+for i in ${DEVICES}; do
+    # Get the group ID and NAME (if exists) for the current device in the list
+    DEVICE_GROUP_ID=$(stat -c '%g' "$i")
+    DEVICE_GROUP_NAME=$(getent group "${DEVICE_GROUP_ID}" | awk -F: '{print $1}')
 
-if [[ ! -e "${CONFIG_DIR}/.stash/ffprobe" ]]; then
-    ln -s "$(command -v ffprobe)" "${CONFIG_DIR}/.stash/ffprobe"
-    find "${CONFIG_DIR}/.stash/ffprobe" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown -h hotio:hotio {} +
-fi
+    # If group NAME doesn't exist, create it and assign it the group ID
+    if [[ -z "${DEVICE_GROUP_NAME}" ]]; then
+        DEVICE_GROUP_NAME="video${RANDOM}"
+        groupadd -g "${DEVICE_GROUP_ID}" "${DEVICE_GROUP_NAME}"
+    fi
+
+    # If the user hotio isn't a member of the group, add him
+    getent group "${DEVICE_GROUP_NAME}" | grep -q hotio || usermod -a -G "${DEVICE_GROUP_NAME}" hotio
+done
