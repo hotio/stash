@@ -16,6 +16,7 @@ RUN apt update && \
     apt update && \
     apt install -y --no-install-recommends --no-install-suggests \
         ocl-icd-libopencl1 \
+        libvips-tools \
         python3-pip \
         jellyfin-ffmpeg7 && \
     pip3 install --break-system-packages --no-cache-dir --upgrade \
