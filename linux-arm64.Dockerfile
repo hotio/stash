@@ -6,12 +6,35 @@ EXPOSE 9999
 ARG IMAGE_STATS
 ENV IMAGE_STATS=${IMAGE_STATS} WEBUI_PORTS="9999/tcp,9999/udp"
 
-RUN apk add --no-cache ffmpeg python3 py3-requests sqlite-libs \
-        py3-beautifulsoup4 py3-lxml && \
-    apk add --no-cache --virtual=build-dependencies py3-pip && \
+ARG DEBIAN_FRONTEND="noninteractive"
+# install packages
+RUN apt update && \
+    apt install -y --no-install-recommends --no-install-suggests \
+        gnupg && \
+    curl -fsSL "https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key" | apt-key add - && \
+    echo "deb [arch=arm64] https://repo.jellyfin.org/ubuntu noble main" | tee /etc/apt/sources.list.d/jellyfin.list && \
+    apt update && \
+    apt install -y --no-install-recommends --no-install-suggests \
+        python3-pip \
+        jellyfin-ffmpeg7 && \
     pip3 install --break-system-packages --no-cache-dir --upgrade \
-        stashapp-tools cloudscraper && \
-    apk del --purge build-dependencies
+        bs4 \
+        cloudscraper \
+        fastbencode \
+        lxml \
+        mechanicalsoup \
+        pystashlib \
+        requests \
+        requests-toolbelt \
+        stashapp-tools && \
+    ln -s /usr/lib/jellyfin-ffmpeg/ffmpeg /usr/bin/ffmpeg && \
+    ln -s /usr/lib/jellyfin-ffmpeg/ffprobe /usr/bin/ffprobe && \
+    ln -s /usr/lib/jellyfin-ffmpeg/vainfo /usr/bin/vainfo && \
+# clean up
+    apt purge -y gnupg && \
+    apt autoremove -y && \
+    apt clean && \
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 ARG VERSION
 RUN curl -fsSL "https://github.com/stashapp/stash/releases/download/latest_develop/CHECKSUMS_SHA1" > "${APP_DIR}/CHECKSUMS_SHA1" && \
