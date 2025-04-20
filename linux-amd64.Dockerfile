@@ -16,8 +16,8 @@ RUN apt update && \
     echo "deb [arch=amd64] https://repo.jellyfin.org/ubuntu noble unstable" | tee -a /etc/apt/sources.list.d/jellyfin.list && \
     apt update && \
     apt install -y --no-install-recommends --no-install-suggests \
-        python3-pip \
         ocl-icd-libopencl1 \
+        python3-pip \
         jellyfin-ffmpeg7 && \
     pip3 install --break-system-packages --no-cache-dir --upgrade \
         stashapp-tools cloudscraper && \
