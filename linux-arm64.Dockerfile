@@ -18,7 +18,15 @@ RUN apt update && \
         python3-pip \
         jellyfin-ffmpeg7 && \
     pip3 install --break-system-packages --no-cache-dir --upgrade \
-        stashapp-tools cloudscraper && \
+        bs4 \
+        cloudscraper \
+        fastbencode \
+        lxml \
+        mechanicalsoup \
+        pystashlib \
+        requests \
+        requests-toolbelt \
+        stashapp-tools && \
     ln -s /usr/lib/jellyfin-ffmpeg/ffmpeg /usr/bin/ffmpeg && \
     ln -s /usr/lib/jellyfin-ffmpeg/ffprobe /usr/bin/ffprobe && \
     ln -s /usr/lib/jellyfin-ffmpeg/vainfo /usr/bin/vainfo && \
