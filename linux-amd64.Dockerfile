@@ -57,6 +57,7 @@ RUN mkdir /tmp/intel-compute-runtime && \
     rm -rf /tmp/*
 
 ARG VERSION
+SHELL ["/bin/bash", "-c"]
 RUN curl -fsSL "https://github.com/stashapp/stash/releases/download/latest_develop/CHECKSUMS_SHA1" > "${APP_DIR}/CHECKSUMS_SHA1" && \
     grep "${VERSION:0:7}" < "${APP_DIR}/CHECKSUMS_SHA1" && \
     curl -fsSL "https://github.com/stashapp/stash/releases/download/latest_develop/stash-linux" > "${APP_DIR}/stash" && \
