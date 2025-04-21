@@ -6,6 +6,10 @@ EXPOSE 9999
 ARG IMAGE_STATS
 ENV IMAGE_STATS=${IMAGE_STATS} WEBUI_PORTS="9999/tcp,9999/udp"
 
+ARG VERSION
+RUN curl -fsSL "https://github.com/stashapp/stash/releases/download/v${VERSION}/stash-linux" > "${APP_DIR}/stash" && \
+    chmod 755 "${APP_DIR}/stash"
+
 ARG DEBIAN_FRONTEND="noninteractive"
 # install packages
 RUN apt update && \
@@ -56,9 +60,5 @@ RUN mkdir /tmp/intel-compute-runtime && \
     dpkg -i *.deb && \
     cd .. && \
     rm -rf /tmp/*
-
-ARG VERSION
-RUN curl -fsSL "https://github.com/stashapp/stash/releases/download/v${VERSION}/stash-linux" > "${APP_DIR}/stash" && \
-    chmod 755 "${APP_DIR}/stash"
 
 COPY root/ /
