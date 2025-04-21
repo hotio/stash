@@ -6,6 +6,15 @@ EXPOSE 9999
 ARG IMAGE_STATS
 ENV IMAGE_STATS=${IMAGE_STATS} WEBUI_PORTS="9999/tcp,9999/udp"
 
+ARG VERSION
+SHELL ["/bin/bash", "-c"]
+RUN curl -fsSL "https://github.com/stashapp/stash/releases/download/latest_develop/CHECKSUMS_SHA1" > "${APP_DIR}/CHECKSUMS_SHA1" && \
+    grep "${VERSION:0:7}" < "${APP_DIR}/CHECKSUMS_SHA1" && \
+    curl -fsSL "https://github.com/stashapp/stash/releases/download/latest_develop/stash-linux-arm64v8" > "${APP_DIR}/stash" && \
+    CHECKSUM=$(sha1sum "${APP_DIR}/stash" | awk '{print $1}') && \
+    grep "${CHECKSUM}" < "${APP_DIR}/CHECKSUMS_SHA1" && \
+    chmod 755 "${APP_DIR}/stash"
+
 ARG DEBIAN_FRONTEND="noninteractive"
 # install packages
 RUN apt update && \
@@ -36,14 +45,5 @@ RUN apt update && \
     apt autoremove -y && \
     apt clean && \
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
-
-ARG VERSION
-SHELL ["/bin/bash", "-c"]
-RUN curl -fsSL "https://github.com/stashapp/stash/releases/download/latest_develop/CHECKSUMS_SHA1" > "${APP_DIR}/CHECKSUMS_SHA1" && \
-    grep "${VERSION:0:7}" < "${APP_DIR}/CHECKSUMS_SHA1" && \
-    curl -fsSL "https://github.com/stashapp/stash/releases/download/latest_develop/stash-linux-arm64v8" > "${APP_DIR}/stash" && \
-    CHECKSUM=$(sha1sum "${APP_DIR}/stash" | awk '{print $1}') && \
-    grep "${CHECKSUM}" < "${APP_DIR}/CHECKSUMS_SHA1" && \
-    chmod 755 "${APP_DIR}/stash"
 
 COPY root/ /
