@@ -14,13 +14,13 @@
   "release": {
     "description": "Releases",
     "hide": false,
-    "last_updated": "2025-10-22T01:07:26.000Z",
-    "last_updated_url": "https://github.com/hotio/stash/actions/runs/18701860891",
+    "last_updated": "2025-10-22T02:46:37.000Z",
+    "last_updated_url": "https://github.com/hotio/stash/actions/runs/18703455675",
     "latest": true,
     "tags": [
       "release",
-      "release-0.29.0",
-      "release-fc96fbc"
+      "release-0.29.1",
+      "release-6a39316"
     ]
   }
 }
