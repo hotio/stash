@@ -8,5 +8,5 @@
   "upstream_digest_arm64": "sha256:4bcae3d8feea7c739930e6dfa0e6cd1c3a5d2aea135c3979f2fc8f90098c74d4",
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "noblevpn",
-  "version": "5e34df7b7bba5d96802344986935c2dadc111560"
+  "version": "b2c8f0958509603b89e88e6de933cad890024df3"
 }
