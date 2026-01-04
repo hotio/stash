@@ -1,14 +1,18 @@
 {
   "nightly": {
+    "commit_message": "Upstream image update",
     "description": "Unstable",
     "hide": false,
-    "last_updated": "2025-12-31T17:30:57.000Z",
-    "last_updated_url": "https://github.com/hotio/stash/actions/runs/20623617684",
+    "last_updated": "2026-01-04T09:23:13.000Z",
+    "last_updated_url": "https://github.com/hotio/stash/actions/runs/20690793823",
     "latest": false,
     "tags": [
       "nightly",
       "nightly-b23b0267adc668bb22390ccc5772e75946aed492",
-      "nightly-d1654bc"
+      "nightly-433f6f8",
+      "",
+      "",
+      ""
     ]
   },
   "release": {
