@@ -1,9 +1,9 @@
 #!/bin/bash
+set -exuo pipefail
+
 old_version=$(jq -re '.version' < VERSION.json)
-version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/stashapp/stash/releases/tags/latest_develop" | jq -re .target_commitish) || exit 0
-[[ -z ${version} ]] && exit 0
-[[ ${version} == null ]] && exit 0
-[[ ${version} == "develop" ]] && version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/stashapp/stash/commits/develop" | jq -re .sha) || exit 0
+version=$(curl -fsSL "https://api.github.com/repos/stashapp/stash/releases/tags/latest_develop" | jq -re .target_commitish)
+[[ ${version} == "develop" ]] && version=$(curl -fsSL "https://api.github.com/repos/stashapp/stash/commits/develop" | jq -re .sha)
 version_check() {
     if [[ "${version}" != "${old_version}" ]]; then
         curl -fsSL "https://github.com/stashapp/stash/releases/download/latest_develop/CHECKSUMS_SHA1" -o CHECKSUMS_SHA1 || return 1
@@ -15,7 +15,7 @@ version_check() {
 }
 version_check || version="${old_version}"
 rm -rf CHECKSUMS_SHA1 stash
-intel_cr_version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/intel/compute-runtime/releases/latest" | jq -re '.tag_name') || exit 0
+intel_cr_version=$(curl -fsSL "https://api.github.com/repos/intel/compute-runtime/releases/latest" | jq -re '.tag_name')
 json=$(cat VERSION.json)
 jq --sort-keys \
     --arg version "${version//v/}" \
