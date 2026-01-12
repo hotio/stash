@@ -1,7 +1,7 @@
 #!/bin/bash
 set -exuo pipefail
 
-old_version=$(jq -re '.version' < VERSION.json)
+old_version=$(jq -re '.version' < meta.json)
 version=$(curl -fsSL "https://api.github.com/repos/stashapp/stash/releases/latest" | jq -re .tag_name)
 version_check() {
     if [[ "${version}" != "${old_version}" ]]; then
@@ -10,8 +10,8 @@ version_check() {
 }
 version_check || version="${old_version}"
 intel_cr_version=$(curl -fsSL "https://api.github.com/repos/intel/compute-runtime/releases/latest" | jq -re '.tag_name')
-json=$(cat VERSION.json)
+json=$(cat meta.json)
 jq --sort-keys \
     --arg version "${version//v/}" \
     --arg intel_cr_version "${intel_cr_version//v/}" \
-    '.version = $version | .intel_cr_version = $intel_cr_version' <<< "${json}" | tee VERSION.json
+    '.version = $version | .intel_cr_version = $intel_cr_version' <<< "${json}" | tee meta.json
