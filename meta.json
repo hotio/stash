@@ -1,6 +1,5 @@
 {
   "description": "Releases",
-  "intel_cr_version": "25.48.36300.8",
   "latest": true,
   "test_amd64": true,
   "test_arm64": true,
@@ -8,5 +7,6 @@
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "noblevpn",
   "upstream_tag_sha": "noblevpn-6a934c2",
-  "version": "0.30.1"
+  "version": "0.30.1",
+  "version_intel_cr": "25.48.36300.8"
 }

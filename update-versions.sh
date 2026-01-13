@@ -9,9 +9,9 @@ version_check() {
     fi
 }
 version_check || version="${old_version}"
-intel_cr_version=$(curl -fsSL "https://api.github.com/repos/intel/compute-runtime/releases/latest" | jq -re '.tag_name')
+version_intel_cr=$(curl -fsSL "https://api.github.com/repos/intel/compute-runtime/releases/latest" | jq -re '.tag_name')
 json=$(cat meta.json)
 jq --sort-keys \
     --arg version "${version//v/}" \
-    --arg intel_cr_version "${intel_cr_version//v/}" \
-    '.version = $version | .intel_cr_version = $intel_cr_version' <<< "${json}" | tee meta.json
+    --arg version_intel_cr "${version_intel_cr//v/}" \
+    '.version = $version | .version_intel_cr = $version_intel_cr' <<< "${json}" | tee meta.json
