@@ -6,6 +6,6 @@
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "noblevpn",
   "upstream_tag_sha": "noblevpn-c3daa84",
-  "version": "9a1b1fb7187eb6f2fdaffd6df777a75ff470b7ea",
+  "version": "aff6db15009e83192b9e2ef82107eb6b29073bd7",
   "version_intel_cr": "26.05.37020.3"
 }
