@@ -1,11 +1,12 @@
 {
   "description": "Unstable",
+  "packages_hash": "1e7ec9a8de7f4163bff22d777e1e8ccd7791f95a",
   "test_amd64": true,
   "test_arm64": true,
   "test_url": "http://localhost:9999",
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "noblevpn",
-  "upstream_tag_sha": "noblevpn-3725bcf",
+  "upstream_tag_sha": "noblevpn-303bac2",
   "version": "01a7583364b97478dd582826fdfe9bff96c0ce97",
   "version_intel_cr": "26.14.37833.4"
 }
