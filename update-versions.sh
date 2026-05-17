@@ -1,5 +1,5 @@
 #!/bin/bash
-set -exuo pipefail
+set -euo pipefail
 
 old_version=$(jq -re '.version' < meta.json)
 version=$(curl -fsSL ${GITHUB_TOKEN:+--header "Authorization: Bearer ${GITHUB_TOKEN}"} "https://api.github.com/repos/stashapp/stash/releases/tags/latest_develop" | jq -re .target_commitish)
@@ -15,9 +15,7 @@ version_check() {
 }
 version_check || version="${old_version}"
 rm -rf CHECKSUMS_SHA1 stash
-version_intel_cr=$(curl -fsSL ${GITHUB_TOKEN:+--header "Authorization: Bearer ${GITHUB_TOKEN}"} "https://api.github.com/repos/intel/compute-runtime/releases/latest" | jq -re '.tag_name')
 json=$(cat meta.json)
 jq --sort-keys \
     --arg version "${version//v/}" \
-    --arg version_intel_cr "${version_intel_cr//v/}" \
-    '.version = $version | .version_intel_cr = $version_intel_cr' <<< "${json}" | tee meta.json
+    '.version = $version' <<< "${json}" | tee meta.json
