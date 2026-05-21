@@ -49,7 +49,7 @@ libaec0-1.1.2-1build1
 libaom3-3.8.2-2ubuntu0.1
 libapparmor1-4.0.1really4.0.1-0ubuntu0.24.04.6
 libapt-pkg6.0t64-2.8.3
-libarchive13t64-3.7.2-2ubuntu0.6
+libarchive13t64-3.7.2-2ubuntu0.7
 libargon2-1-0~20190702+dfsg-4build1
 libassuan0-2.5.6-1build1
 libattr1-1:2.5.2-1build1.1
