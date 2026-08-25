@@ -5,7 +5,7 @@
   "test_url": "http://localhost:9999",
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "noblevpn",
-  "upstream_tag_sha": "noblevpn-6e61b3b",
+  "upstream_tag_sha": "noblevpn-20e4613",
   "upstream_tag_sha__command": "json=$(cat meta.json) && upstream_image=$(jq -re '.upstream_image' <<< \"${json}\") && upstream_image_base=$(basename \"${upstream_image}\") && upstream_tag=$(jq -re '.upstream_tag' <<< \"${json}\") && tags_json=$(curl -fsSL ${GITHUB_TOKEN:+--header \"Authorization: Bearer ${GITHUB_TOKEN}\"} \"https://hotio.dev/containers/${upstream_image_base}-tags.json\") && commit_sha=$(jq -r --arg tag \"${upstream_tag}\" '.[$tag].commit_sha' <<< \"${tags_json}\") && upstream_tag_sha=${upstream_tag}-${commit_sha:0:7} && echo \"${upstream_tag_sha}\"",
   "version": "c1fa78e0b28ac1d5164421f31e2d105dcaa2ea40",
   "version__command": "version=$(curl -fsSL ${GITHUB_TOKEN:+--header \"Authorization: Bearer ${GITHUB_TOKEN}\"} \"https://api.github.com/repos/stashapp/stash/releases/tags/latest_develop\" | jq -re .target_commitish) && if [[ ${version} == \"develop\" ]]; then version=$(curl -fsSL ${GITHUB_TOKEN:+--header \"Authorization: Bearer ${GITHUB_TOKEN}\"} \"https://api.github.com/repos/stashapp/stash/commits/develop\" | jq -re .sha); fi && curl -fsSL \"https://github.com/stashapp/stash/releases/download/latest_develop/CHECKSUMS_SHA1\" -o CHECKSUMS_SHA1 && grep -q \"${version:0:7}\" < CHECKSUMS_SHA1 && curl -fsSL \"https://github.com/stashapp/stash/releases/download/latest_develop/stash-linux\" -o stash && checksum=\"$(sha1sum stash | awk '{print $1}')\" && grep -q \"${checksum}\" < CHECKSUMS_SHA1 && rm -rf CHECKSUMS_SHA1 stash && echo \"${version}\"",
